@@ -42,7 +42,6 @@ var H5 = function () {
 		this.el.fullpage({
 			'navigation':true,
       'css3':true,
-      'sectionsColor':['#245641','#00ff00','#354899','#003388'],
       onLeave: function (index,nextIndex,direction) {
 		            $(this).find('.h5_component').trigger('onLeave')
 		        },

@@ -35,31 +35,79 @@
             var h5 = new H5()
             var logoComponent = {
                 type : 'base',
-                width : 516,
-                height : 304,
-                bg : 'p1_people.png',
+                width : 396,
+                height : 130,
+                bg : '../imgs/face_logo.png',
                 css : {
                     opacity : 0
                 },
-                animateIn:{bottom : 80,opacity : 1},
-                animateOut:{bottom : 0,opacity : 0},
+                animateIn:{top : '20%',opacity : 1},
+                animateOut:{top : 0,opacity : 0},
                 center : true
             }
+            var footerComponent = {
+                        type : 'base',
+                        animateIn:{bottom : 0,opacity : 1},
+                        animateOut:{bottom : 0,opacity : 0},
+                    }
             
                 h5.addPage('face')
                     .addComponent('logo',logoComponent)
+                    .addComponent('slogan',{
+                        type : 'base',
+                        width : 364,
+                        height : 100,
+                        bg : '../imgs/face_slogan.png',
+                        css : {
+                            opacity : 0
+                        },
+                        animateIn:{top : '38%',opacity : 1},
+                        animateOut:{top : 0,opacity : 0},
+                        center : true
+                    })
+                    .addComponent('left_img',{
+                        type : 'base',
+                        width : 370,
+                        height : 492,
+                        bg : '../imgs/face_img_left.png',
+                        css : {opacity : 0},
+                        animateIn : {left : '0' ,bottom : '0',opacity : 1},
+                        animateOut :{left : '-40px' ,bottom : '-40px',opacity : 0}
+                    })
+                    .addComponent('right_img',{
+                        type : 'base',
+                        width : 370,
+                        height : 492,
+                        bg : '../imgs/face_img_right.png',
+                        css : {opacity : 0,},
+                        animateIn : {right : '0',bottom : '0',opacity : 1},
+                        animateOut :{right : '-40px',bottom : '-40px',opacity : 0}
+                    })
+                    .addComponent('footer',footerComponent)
                   .addPage('desc')
                     .addComponent('caption',{
                         text : '核心理念',
                         animateIn :{top : 64,opacity : 1},
                         animateOut : {top : 0,opacity : 0}
                     })
+                    .addComponent('people',{
+                        type : 'base',
+                        width : 514,
+                        height : 306,
+                        bg : '../imgs/p1_people.png',
+                        css : { opacity : 0},
+                        animateIn : {bottom :'80px', opacity : 1},
+                        animateOut : {bottom : '-80px', opacity : 0},
+                        center : true
+                    })
+                    .addComponent('footer',footerComponent)
                   .addPage('Page-3')  
                     .addComponent('caption',{
                         text:'课程方向分布',
                         animateIn :{top : 64,opacity : 1},
                         animateOut : {top : 0,opacity : 0}
-                    })           
+                    })
+                    .addComponent('footer',footerComponent)           
               .loader()
             
         })
