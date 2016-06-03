@@ -8,9 +8,14 @@
 	<style>
 	html{font-size: 62.5%}
 	body,div,h4,h3,ul{margin: 0;padding: 0;}
+	ul>li{list-style: none;}
 	body{font-size: 12px;font-size: 1.2rem;font-family: 'microsoft yahei'}
 	*{box-sizing:border-box;}
 	a{text-decoration: none}
+	.head-bar{position: fixed;top: 0;left:0;height: 30px;line-height:30px;color:#fff;width: 100%;}
+	.head-bar>ul>li{float: right;margin-right: 1rem;margin-top: 2px;height: 28px;line-height: 28px;padding:0 10px; border: 1px solid #fff;border-radius: 2px; cursor: pointer;}
+	.head-bar>ul>li:hover{opacity: 0.9;border-color: #eee;color: #eee}
+
 	.shop-info{height: 100px;width: 100%;padding-top: 40px; background-image:linear-gradient(rgb(82, 165, 226) 10%, rgb(5, 65, 109)60%,rgba(25,96,150,1))}
 	.shop-info h3{text-align: center;font-size: 2rem;white-space: nowrap;word-break:keep-all;overflow: hidden; text-overflow:ellipsis;}
 	.shop-info h3 a{color: #AF744D;text-decoration: none}
@@ -18,40 +23,89 @@
 	.commodity-item:after{content:'';display: table;clear: both;margin-bottom: 10px;}
 	.commodity-pic{width: 25%;float: left;}
 	.commodity-pic img{max-width: 100%;border-radius: 5px;margin-top: 10px;}
-	.commodity-info{width: 70%;margin-left: 5%;float: left;}
-	.commodity-title{white-space: nowrap;word-break:keep-all;overflow: hidden; text-overflow:ellipsis; font-size: 2rem;}
-	.commodity-info .price{color:#ff5933;}
-	.commodity-buy-option{position: absolute;right: 10px;bottom: 5px;}
-	.commodity-buy-option:after{content: '';clear: both;}
-	.commodity-buy-option button{background-image: linear-gradient(#EFD895,#C1A211);border:1px solid #fff;border-radius: 5px;padding: 3px 10px;cursor: pointer;box-shadow: 0 0 1px #fff inset}
-	.commodity-buy-option button:hover{border:1px solid #ccc;}
-	.commodity-buy-option button:nth-of-type(1){background-image: linear-gradient(#2EB1E8,#0F81CA);color: #fff;}
-	@media screen and (max-width: 767px){
-		.commodity-title,.commodity-buy-option button,.commodity-info .price {font-size: 1rem}
-		.commodity-info .price {line-height: 2rem;margin-top: 1rem;}
-	}
-	@media screen and (min-width: 768px) and (max-width: 997px)  {
-		.commodity-title,.commodity-buy-option button,.commodity-info .price {font-size: 2rem}
-		.commodity-info .price {line-height: 4rem;margin-top: 2rem;}
-	}
-	@media screen and (min-width: 997px){
-		.commodity-title,.commodity-buy-option button,.commodity-info .price {font-size: 3rem}
-		.commodity-info .price {line-height: 6rem;margin-top: 3rem;}
-	}
+	.commodity-info{margin-left: 5%;float: left;}
+	.commodity-title{white-space: nowrap;word-break:keep-all;overflow: hidden; text-overflow:ellipsis; font-size: 1rem;}
+	
+	.commodity-sale-info,.commodity-sale-info .price,.commodity-sale-info .btn-group{float: left;}
+	.commodity-sale-info{margin-top: 10px}
+	.commodity-sale-info:after{content:'';clear: both;}
+	.commodity-sale-info .price{font-size: 1.2rem;color:#ff5933;}
+	.commodity-sale-info .btn-group{float: left;margin-left: 5px}
+	.commodity-sale-info button{background-image: linear-gradient(#EFD895,#C1A211);border:1px solid #fff;border-radius: 5px;padding: 3px 10px;cursor: pointer;box-shadow: 0 0 1px #fff inset;font-size: 1rem}
+	.commodity-sale-info button:hover{border:1px solid #ccc;opacity: .9}
+	.commodity-sale-info button:nth-of-type(1){background-image: linear-gradient(#2EB1E8,#0F81CA);color: #fff;}
+	
 	.filter-box{border-bottom: 1px solid #ccc;}
+	.filter-box:before{content:'';display: block;margin-top: 10px;}
 	.filter-option{line-height: 2rem}
 	.filter-option>span{width: 70px; float: left;text-align: right;}
 	.filter-option li{float: left;list-style-type: none;padding: 0 5px;}
 	.filter-option li>a{color:#0462D1 }
 	.filter-option li>a.select{background-color:#0462D1;color: #fff}
-
 	.filter-option:after{content: '';display: table;clear: both}
-	
-	
-
 	</style>
 </head>
 <body>
+<!-- head bar-->
+<!-- 未登录-->
+<div class="head-bar">
+	<ul>
+		<li><a href=""></a>登录</li>
+	</ul>
+</div>
+<!-- <div class="bar-box w om" mousehover="bar-expend">
+	<div id="MessageBox" class="buy-car om" style="display: none;color: #ffff00"></div>
+	<input type="hidden" id="SiteName" name="SiteName" value="配件商务网">
+	<div class="buy-car om" mousehover-list="bar-expend">
+		<div class="buy-name rm">
+			<div class="ico bg"></div>
+			<a href="/Order/ConsultBuy.aspx" class="buy-title">询价单&nbsp;<em class="buy-num" id="InquiryNum">0</em>&nbsp;件</a>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="buy-car om" mousehover-list="bar-expend">
+		<div class="buy-name rm">
+			<div class="ico bg"></div>
+			<a href="/Order/Buy.aspx" class="buy-title">采购单&nbsp;<em class="buy-num" id="buyNum">1</em>&nbsp;件</a>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<ul class="index-expend om" mousehover="bar-expend">
+		<li><div class="expend-title rm"><a href="/">导航首页</a></div></li>
+		<li><div class="expend-title rm"><a href="/Index.aspx">商品首页</a></div></li>
+		<li mousehover-list="bar-expend">
+			<div class="expend-title rm"><a href="/Member/MemberInfo.aspx">我的配商网</a><b></b></div>
+			<div class="clear"></div>
+			<div class="bar-expend rm">
+				<div class="box-area rm">
+					<div class="model-box rm">
+						<div class="title-list rm">
+							<a href="/Member/MemberCenter.aspx">买家中心</a>
+						</div>
+						<div class="link-list rm">
+							<a href="/Member/MemberOrder.aspx">我的订单</a>
+							<a href="/Order/BuyerConsult.aspx">我的询价单</a>
+							<a href="/Order/BatchOrder.aspx">批量下单</a>
+							<a href="/Member/MyFavorite.aspx">我的收藏</a>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="model-box rm">
+						<div class="title-list rm">
+							<a href="/Store/">卖家中心</a>
+						</div>
+						<div class="link-list rm">
+							<a href="/Store/StoreProductList.aspx">全部商品</a>
+							<a href="/Store/OrderList.aspx">卖家订单</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<div class="login-model om" id="LoginInfoBox">配件商务网官方旗舰店 ,欢迎您来到配件商务网！<a href="javascript:User.logout();">[注销]</a></div>
+</div> -->
+
 	<!--店铺信息 -->
 	<div class="shop-info">
 		<h3 class="shop-name"><a href="">广州南方正圆汽车配件有限公司</a></h3>
@@ -94,134 +148,17 @@
 				<div class="commodity-title">
 					<span class="code">8543513-1&nbsp;</span><span class="name">窗帘挂钩(白色)&nbsp;</span><span class="category">海格客车</span>
 				</div>
-				<h4 class="price">&yen;5500.00</h4>
-				<div class="commodity-buy-option">
-					<button>+采购单</button>
-					<button>+询价单</button>
-					<button>+收藏</button>
+				<div class="commodity-sale-info">
+					<h4 class="price">&yen;5500.00</h4>
+					<div class="btn-group">
+						<button>+采购单</button>
+						<button>+询价单</button>
+						<button>+收藏</button>
+					</div>
 				</div>
-
 			</div>
 		</div>
-		<div class="commodity-item">
-			<div class="commodity-pic">
-				<img src="./imgs/1.jpg" alt="">
-			</div>
-			<div class="commodity-info">
-				<div class="commodity-title">
-					<span class="code">8543513-1&nbsp;</span><span class="name">窗帘挂钩(白色)&nbsp;</span><span class="category">海格客车</span>
-				</div>
-				<h4 class="price">&yen;5500.00</h4>
-				<div class="commodity-buy-option">
-					<button>+采购单</button>
-					<button>+询价单</button>
-					<button>+收藏</button>
-				</div>
 
-			</div>
-		</div>
-		<div class="commodity-item">
-			<div class="commodity-pic">
-				<img src="./imgs/1.jpg" alt="">
-			</div>
-			<div class="commodity-info">
-				<div class="commodity-title">
-					<span class="code">8543513-1&nbsp;</span><span class="name">窗帘挂钩(白色)&nbsp;</span><span class="category">海格客车</span>
-				</div>
-				<h4 class="price">&yen;5500.00</h4>
-				<div class="commodity-buy-option">
-					<button>+采购单</button>
-					<button>+询价单</button>
-					<button>+收藏</button>
-				</div>
-
-			</div>
-		</div>
-		<div class="commodity-item">
-			<div class="commodity-pic">
-				<img src="./imgs/1.jpg" alt="">
-			</div>
-			<div class="commodity-info">
-				<div class="commodity-title">
-					<span class="code">8543513-1&nbsp;</span><span class="name">窗帘挂钩(白色)&nbsp;</span><span class="category">海格客车</span>
-				</div>
-				<h4 class="price">&yen;5500.00</h4>
-				<div class="commodity-buy-option">
-					<button>+采购单</button>
-					<button>+询价单</button>
-					<button>+收藏</button>
-				</div>
-
-			</div>
-		</div>
-		<div class="commodity-item">
-			<div class="commodity-pic">
-				<img src="./imgs/1.jpg" alt="">
-			</div>
-			<div class="commodity-info">
-				<div class="commodity-title">
-					<span class="code">8543513-1&nbsp;</span><span class="name">窗帘挂钩(白色)&nbsp;</span><span class="category">海格客车</span>
-				</div>
-				<h4 class="price">&yen;5500.00</h4>
-				<div class="commodity-buy-option">
-					<button>+采购单</button>
-					<button>+询价单</button>
-					<button>+收藏</button>
-				</div>
-
-			</div>
-		</div>
-		<div class="commodity-item">
-			<div class="commodity-pic">
-				<img src="./imgs/1.jpg" alt="">
-			</div>
-			<div class="commodity-info">
-				<div class="commodity-title">
-					<span class="code">8543513-1&nbsp;</span><span class="name">窗帘挂钩(白色)&nbsp;</span><span class="category">海格客车</span>
-				</div>
-				<h4 class="price">&yen;5500.00</h4>
-				<div class="commodity-buy-option">
-					<button>+采购单</button>
-					<button>+询价单</button>
-					<button>+收藏</button>
-				</div>
-
-			</div>
-		</div>
-		<div class="commodity-item">
-			<div class="commodity-pic">
-				<img src="./imgs/1.jpg" alt="">
-			</div>
-			<div class="commodity-info">
-				<div class="commodity-title">
-					<span class="code">8543513-1&nbsp;</span><span class="name">窗帘挂钩(白色)&nbsp;</span><span class="category">海格客车</span>
-				</div>
-				<h4 class="price">&yen;5500.00</h4>
-				<div class="commodity-buy-option">
-					<button>+采购单</button>
-					<button>+询价单</button>
-					<button>+收藏</button>
-				</div>
-
-			</div>
-		</div>
-		<div class="commodity-item">
-			<div class="commodity-pic">
-				<img src="./imgs/1.jpg" alt="">
-			</div>
-			<div class="commodity-info">
-				<div class="commodity-title">
-					<span class="code">8543513-1&nbsp;</span><span class="name">窗帘挂钩(白色)&nbsp;</span><span class="category">海格客车</span>
-				</div>
-				<h4 class="price">&yen;5500.00</h4>
-				<div class="commodity-buy-option">
-					<button>+采购单</button>
-					<button>+询价单</button>
-					<button>+收藏</button>
-				</div>
-
-			</div>
-		</div>
 	</div>
 </body>
 </html>
