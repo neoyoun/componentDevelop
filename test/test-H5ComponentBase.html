@@ -38,18 +38,31 @@
         <script type="text/javascript">
             var cfg = {
                 type : 'base',
-                width : 516,
-                height : 304,
-                bg : 'p1_people.png',
+                width : 200,
+                height : 100,
+                text : '我是一个旧的组件',
                 css : {
-                    opacity : 0
+                    top : 100,
+                    left : 50,
+                    border : '1px solid #ccc'
                 },
-                animateIn:{bottom : 80,opacity : 1},
-                animateOut:{bottom : 0,opacity : 0},
                 center : true
             }
-            var h5 = new H5ComponentBase('myName',cfg)
-            $('.iphone').append(h5)
+            var cfg_relative = {
+                type : 'base',
+                width : 200,
+                height : 100,
+                text : '我是一个新的组件',
+                css : {
+                    top : 100,
+                    left : 50,
+                    border : '1px solid #f0f'
+                },
+                relativeTo : 'old',
+            }
+            $('.iphone').append(new H5ComponentBase('old',cfg))
+            $('.iphone').append(new H5ComponentBase('cfg_relative',cfg_relative))
+            
             var leave = true;
             $('body').on('click',function () {
                 leave  = !leave
