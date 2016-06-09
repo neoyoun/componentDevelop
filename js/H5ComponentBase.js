@@ -5,6 +5,7 @@ var H5ComponentBase = function ( name, cfg) {
 	var cls = ' h5_component_'+cfg.type;
 	var component  = $('<div class="h5_component h5_component_name_'+name+cls+'" id="'+id+'">')
 	cfg.text && component.text(cfg.text)
+	cfg.code && component.html(cfg.code)
 	cfg.width && component.width(cfg.width/2)
 	cfg.height && component.height(cfg.height/2)
 	cfg.css && component.css( cfg.css )

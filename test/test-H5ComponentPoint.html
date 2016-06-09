@@ -40,7 +40,34 @@
         </div>
 
         <script type="text/javascript">
+            var cfg = {
+                type : 'point',
+                data : [
+                    ['A项' , .7 , 'yellow'],
+                    ['B项' , .4 , 'red' , 0 , '-60%'],
+                    ['C项' , .5 , 'green' , 0 , '120%']
+                ],
+                width : 400,
+                height : 300,
+                css : {
+                    opacity : 0,
+                },
+                animateIn:{top : '20%',opacity : 1},
+                animateOut:{top : '20%',opacity : 0},
+                center : true
+            }
 
+            var h5 = new H5ComponentPoint('mypoint' , cfg)
+            $('.iphone').append(h5)
+
+            var leave = true;
+            $('body').on('click',function () {
+                leave  = !leave
+                $('.h5_component').trigger( leave?'onLeave' : 'onLoad')
+            })
+            setTimeout(function(){
+                $('body').click()
+            },500)
         </script>
 
     </body>

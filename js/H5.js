@@ -40,13 +40,13 @@ var H5 = function () {
 	/*h5对象初始化呈现*/
 	this.loader = function () {
 		this.el.fullpage({
-			'navigation':true,
       'css3':true,
       onLeave: function (index,nextIndex,direction) {
 		            $(this).find('.h5_component').trigger('onLeave')
 		        },
       afterLoad: function (anchorLink,index) {
 			          $(this).find('.h5_component').trigger('onLoad')
+			          $(this).find('.h5_component_name_footer').height($(document).width()*20/320 + 'px')
 			      }
             })
 		this.page[0].find('.h5_component').trigger('onLoad')

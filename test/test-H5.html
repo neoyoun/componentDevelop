@@ -68,7 +68,7 @@
                         width : 370,
                         height : 492,
                         bg : '../imgs/face_img_left.png',
-                        css : {opacity : 0},
+                        css : {opacity : 0,maxWidth : '50%'},
                         animateIn : {left : '0' ,bottom : '0',opacity : 1},
                         animateOut :{left : '-40px' ,bottom : '-40px',opacity : 0}
                     })
@@ -77,7 +77,7 @@
                         width : 370,
                         height : 492,
                         bg : '../imgs/face_img_right.png',
-                        css : {opacity : 0,},
+                        css : {opacity : 0,maxWidth : '50%'},
                         animateIn : {right : '0',bottom : '0',opacity : 1},
                         animateOut :{right : '-40px',bottom : '-40px',opacity : 0}
                     })
@@ -88,14 +88,40 @@
                         animateIn :{top : 64,opacity : 1},
                         animateOut : {top : 0,opacity : 0}
                     })
+                    .addComponent('title',{
+                        code : 'IT教育网=<strong>只学有用的</strong>',
+                        width : 460,
+                        css : {
+                            top : 155,
+                            fontSize : '23px',
+                            color : 'red'
+                        },
+                        center : true
+                    })
+                    .addComponent('introduce',{
+                        code : '2013年，IT教育网的诞生引领中国IT职业从教育进入新时代；</br>高质量实战课程、全新教学模式、实时互动学习，以领先优势打造行业品牌；迄今为止，IT教育网已成为中国规模最大、互动性最高的IT技能学习平台。',
+                        width : 522,
+                        height : 336,
+                        bg : '../imgs/description_bg.gif',
+                        css : {
+                            top : 195,
+                            padding : '20px 15px',
+                            fontSize : '12px',
+                            lineHeight : '19px',
+                            color : '#fff'
+                        },
+                        animateIn :{opacity : 1},
+                        animateOut : {opacity : 0},
+                        center : true
+                    })
                     .addComponent('people',{
                         type : 'base',
                         width : 514,
                         height : 306,
                         bg : '../imgs/p1_people.png',
                         css : { opacity : 0},
-                        animateIn : {bottom :'80px', opacity : 1},
-                        animateOut : {bottom : '-80px', opacity : 0},
+                        animateIn : {bottom :'40px', opacity : 1},
+                        animateOut : {bottom : '-40px', opacity : 0},
                         center : true
                     })
                     .addComponent('footer',footerComponent)
