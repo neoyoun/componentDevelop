@@ -3,17 +3,16 @@ body,div,h1,h2,h3,h4,h5,h6{margin: 0;padding: 0}
 *{box-sizing : border-box;}
 body{width: 100%;height: 100%}
 .h5_page{position: relative;width: 100%;height: 100%}
+.h5_page{background-image: url('../imgs/page_bg.png');}
 .h5_page_face{background-image: url('../imgs/face_bg.png')}
 .h5_component_name_footer{position: fixed;width: 100%;height: 20px;bottom: 0;opacity: 0;background-image: url('../imgs/footer.png') ;}
 .h5_component_name_caption{
-	width: 245px;
-	height: 55px;
-	padding-left: 40px;
-	line-height: 45px;
+	background-image: url(../imgs/page_caption_bg.png);
+	width : 283px;
+  height : 160px;
 	text-align: center;
-	opacity: 0;
-	background-image: url(../imgs/page_caption_bg1.png);
 	font-size: 20px;
+	line-height: 140px;
 	color: #fff;
 	font-family: "microsoft yahei"
 	}

@@ -7,8 +7,8 @@ var H5ComponentPoint = function  (name , cfg) {
 		var point = $('<div class="point point_'+idx +'">')
 		var name = $('<div class="name">'+item[0]+'</div>')
 		var rate = $('<div class="per">'+ (item[1]*100)+'%</div>')
-		name.append(rate)
-		point.append(name)
+		rate.append(name)
+		point.append(rate)
 				var per = (item[1]/base * 100) + '%'
 				point.width(per).height(per)
 
@@ -17,8 +17,6 @@ var H5ComponentPoint = function  (name , cfg) {
 				}
 				if( item[3] !== undefined && item[4] !== undefined){
 					point.css('left' , item[3]).css('top' , item[4])
-
-					
 				}
 				point.css('z-index' , 100-idx)
 
@@ -39,6 +37,13 @@ var H5ComponentPoint = function  (name , cfg) {
 			$(item).css('left' , $(item).data('initLeft')).css('top' , 0).css('opacity' , 0.5)
 		})
 	})
+   component.find('.point').on('click',function(){
+
+        component.find('.point').removeClass('point_focus');
+        $(this).addClass('point_focus');
+
+        return false;
+   }).eq(0).addClass('point_focus')
 
 
 	return component

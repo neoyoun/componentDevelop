@@ -26,10 +26,13 @@ var H5 = function () {
 		cfg = $.extend({
 			type : 'base'
 		},cfg)
-		var component
+		var component;
 		switch(cfg.type){
 			case 'base':
 				component = new H5ComponentBase(name,cfg)
+			break;
+			case 'point' :
+			  component = new H5ComponentPoint(name,cfg)
 			break;
 			default:
 		}
@@ -38,7 +41,8 @@ var H5 = function () {
 		return this
 	},
 	/*h5对象初始化呈现*/
-	this.loader = function () {
+	this.loader = function (firstPage) {
+
 		this.el.fullpage({
       'css3':true,
       onLeave: function (index,nextIndex,direction) {
@@ -51,6 +55,9 @@ var H5 = function () {
             })
 		this.page[0].find('.h5_component').trigger('onLoad')
 		this.el.show()
+		if( firstPage ){
+			$.fn.fullpage.moveTo( firstPage )
+		}
 	}
 
 	return this

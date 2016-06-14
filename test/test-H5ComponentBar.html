@@ -40,8 +40,38 @@
         </div>
 
         <script type="text/javascript">
+         var cfg ={
+            type : 'bar',
+            width : 530 ,
+            height : 600,
+            center : true,
+            data :[
+            ['javascript',.32,'#ff7676'],
+            ['HTML/CSS',.21],
+            ['CSS3',.1],
+            ['Html5',.1],
+            ['jQuery',.04],
+            ['webapp',.03],
+            ['Node.js',.03],
+            ['Bootstrap',.02],
+            ['AngularJs',.02]
 
+            ],
+            css : { top : 0 , opacity : 0 },
+            animateIn :{top : '20%', opacity : 1 },
+            animateOut :{top : 0 , opacity : 0 }
+         }
+         var h5 = new H5ComponentBar('mybar',cfg)
+         $('.iphone').append(h5)
 
+          var leave = true;
+            $('body').on('click',function () {
+                leave  = !leave
+                $('.h5_component').trigger( leave?'onLeave' : 'onLoad')
+            })
+         setTimeout(function () {
+              $('body').click()
+          }, 1000)
         </script>
 
     </body>

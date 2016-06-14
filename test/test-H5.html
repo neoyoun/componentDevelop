@@ -16,10 +16,26 @@
     <link rel="stylesheet" type="text/css" href="../css/H5.css">
 
     <script type="text/javascript" src="../js/H5ComponentBase.js"></script>
+    <script type="text/javascript" src="../js/H5ComponentPoint.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/H5ComponentBase.css">
+    <link rel="stylesheet" type="text/css" href="../css/H5ComponentPoint.css">
 
     <style type="text/css">
     body{margin:0;padding: 0}
+    .h5_component_name_slogan.h5_component_base_load{
+        animation: rock 1s .5s;
+    }
+    @keyframes rock{
+        0% {transform : rotate(3deg);}
+        5% {transform : rotate(-4deg);}
+        15% {transform : rotate(0deg);}
+        20% {transform : rotate(2deg);}
+        30% {transform : rotate(-3deg);}
+        35% {transform : rotate(5deg);}
+        40% {transform : rotate(-2deg);}
+        70% {transform : rotate(0deg);}
+        100% {transform : rotate(0deg);}
+    }
     </style>
 </head>
 
@@ -41,13 +57,31 @@
                 },
                 animateIn:{top : '20%',opacity : 1},
                 animateOut:{top : 0,opacity : 0},
-                center : true
+                center : true,
+                delay : 400
             }
             var footerComponent = {
                         type : 'base',
                         animateIn:{bottom : 0,opacity : 1},
                         animateOut:{bottom : 0,opacity : 0},
                     }
+            var pointCfg = {
+                type : 'point',
+                data : [
+                    ['中级' , .45 , '#ff7676' , 0 , 0 , ],
+                    ['高级' , .35 , '#99c1ff' , '50%' , '-80%'],
+                    ['初级' , .30 , '#ffa4a4' , '-30%' , '-60%']
+                ],
+                width : 340,
+                height : 340,
+                css : {
+                    opacity : 0,
+                    top : 380
+                },
+                animateIn:{top : 280 ,opacity : 1},
+                animateOut:{top : 380,opacity : 0},
+                center : true,
+            }
             
                 h5.addPage('face')
                     .addComponent('logo',logoComponent)
@@ -57,62 +91,80 @@
                         height : 100,
                         bg : '../imgs/face_slogan.png',
                         css : {
-                            opacity : 0
+                            opacity : 0,
+                            left : '50%',
+                            top : '38%'
                         },
-                        animateIn:{top : '38%',opacity : 1},
-                        animateOut:{top : 0,opacity : 0},
-                        center : true
+                        animateIn: {opacity : 1 , left : '50%'},
+                        animateOut: {opacity : 0 , left : '0%'},
+                        center : true,
+                        delay : 300
                     })
                     .addComponent('left_img',{
                         type : 'base',
                         width : 370,
-                        height : 492,
+                        height : 493,
                         bg : '../imgs/face_img_left.png',
-                        css : {opacity : 0,maxWidth : '50%'},
+                        css : {opacity : 0,left: '-50px',bottom : '-50px'},
                         animateIn : {left : '0' ,bottom : '0',opacity : 1},
-                        animateOut :{left : '-40px' ,bottom : '-40px',opacity : 0}
+                        animateOut :{opacity : 0,left: '-50px',bottom : '-50px'},
+                        
                     })
                     .addComponent('right_img',{
                         type : 'base',
-                        width : 370,
-                        height : 492,
+                        width : 276,
+                        height : 449,
                         bg : '../imgs/face_img_right.png',
-                        css : {opacity : 0,maxWidth : '50%'},
-                        animateIn : {right : '0',bottom : '0',opacity : 1},
-                        animateOut :{right : '-40px',bottom : '-40px',opacity : 0}
+                        css : {opacity : 0,right: '-50px',bottom : '-50px'},
+                        animateIn : {right : 0 ,bottom : 0,opacity : 1},
+                        animateOut :{opacity : 0,right: '-50px',bottom : '-50px'},
+                       
                     })
                     .addComponent('footer',footerComponent)
+
                   .addPage('desc')
                     .addComponent('caption',{
                         text : '核心理念',
-                        animateIn :{top : 64,opacity : 1},
-                        animateOut : {top : 0,opacity : 0}
+                        css : {
+                            opacity : 0,
+                            top : '-100px'
+                        },
+                        animateIn :{top : 0,opacity : 1},
+                        animateOut : {top : '-100px',opacity : 0}
                     })
                     .addComponent('title',{
                         code : 'IT教育网=<strong>只学有用的</strong>',
-                        width : 460,
+                        width : 490,
+                        center : true,
                         css : {
-                            top : 155,
-                            fontSize : '23px',
-                            color : 'red'
+                            top : 140,
+                            fontSize : '25px',
+                            color : 'red',
+                            opacity : 0,
+                            left : '50%'
                         },
-                        center : true
+                        animateIn :{opacity : 1 , left : '50%'},
+                        animateOut :{opacity : 0 , left : '0%'},
+                        delay : 200,
+                        
                     })
-                    .addComponent('introduce',{
+                    .addComponent('description',{
                         code : '2013年，IT教育网的诞生引领中国IT职业从教育进入新时代；</br>高质量实战课程、全新教学模式、实时互动学习，以领先优势打造行业品牌；迄今为止，IT教育网已成为中国规模最大、互动性最高的IT技能学习平台。',
                         width : 522,
                         height : 336,
                         bg : '../imgs/description_bg.gif',
                         css : {
-                            top : 195,
-                            padding : '20px 15px',
+                            top : 240,
+                            padding : '15px 15px 20px 15px',
                             fontSize : '12px',
                             lineHeight : '19px',
-                            color : '#fff'
+                            color : '#fff',
+                            opacity : 0
                         },
-                        animateIn :{opacity : 1},
-                        animateOut : {opacity : 0},
-                        center : true
+                        animateIn :{opacity : 1 , top: 190},
+                        animateOut : {opacity : 0 , top : 240},
+                        center : true,
+                        delay : 600,
                     })
                     .addComponent('people',{
                         type : 'base',
@@ -122,14 +174,36 @@
                         css : { opacity : 0},
                         animateIn : {bottom :'40px', opacity : 1},
                         animateOut : {bottom : '-40px', opacity : 0},
-                        center : true
+                        center : true,
                     })
                     .addComponent('footer',footerComponent)
+
                   .addPage('Page-3')  
                     .addComponent('caption',{
-                        text:'课程方向分布',
-                        animateIn :{top : 64,opacity : 1},
-                        animateOut : {top : 0,opacity : 0}
+                        text:'课程难度分布',
+                         css : {
+                            opacity : 0,
+                            top : '-100px'
+                        },
+                        animateIn :{top : 0,opacity : 1},
+                        animateOut : {top : '-100px',opacity : 0}
+                    })
+                    .addComponent('lever',pointCfg)
+                    .addComponent('lever-desc',{
+                        text : '课程难度分布，中级课程占到45%',
+                        width : 360,
+                        center : true,
+                        css :{
+                            fontSize : '12px',
+                            textAlign : 'center',
+                            color : '#000',
+                            bottom : 0,
+                            opacity : 0
+                        },
+                        animateIn : { opacity : 1 , bottom : 70},
+                        animateOut : { opacity : 0 , bottom : 0},
+                        delay : 300
+
                     })
                     .addComponent('footer',footerComponent)           
               .loader()

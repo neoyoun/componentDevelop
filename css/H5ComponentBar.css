@@ -1,3 +1,19 @@
 /* 柱状组件样式 */
+.h5_component_bar .line{height: 32px;}
+.h5_component_bar .line>div{float: left;}
+.h5_component_bar .line:after{content: '';display: block;clear: both}
+.h5_component_bar .line .rate{height: 16px;}
+.rate>.bg{border-radius: 4px;
+animation: process 1s linear;}
+.per{animation: fadeIn 1.2s}
+@keyframes process {
+	0% {width: 0% ;}
+	100% {width: 100% ;}
+}
+@keyframes fadeIn {
+	0% {opacity: 0}
+	90% {opacity: 0}
+	100% {opacity: 1}
+}
 
 
