@@ -1,3 +1,25 @@
 /* 垂直柱状组件样式 */
-
+.h5_component_bar_v {font-family: 'microsoft yahei';transform:rotate(-90deg);}
+.h5_component_bar_v .line{height:16px;margin-top: 16px;line-height: 16px;}
+.h5_component_bar_v .line .name,.h5_component_bar_v .line .per {transform:rotate(90deg);}
+.h5_component_bar_v .line>div{float: left;}
+.h5_component_bar_v .line .rate{height: 16px;}
+.h5_component_bar_v .line:after{content: '';display: block;clear: both}
+.h5_component_bar_v .bg,.h5_component_bar_v_leave .bg{
+	border-radius: 4px;
+	opacity: 0;
+	width: 0;
+	transition:all 1s .5s;
+}
+.h5_component_bar_v_load .bg{
+	width: 100%;
+	opacity: 1
+}
+.h5_component_bar_v .per,.h5_component_bar_v_leave .per{
+	opacity: 0;
+	transition:all .5s 1.5s ease-in-out;
+}
+.h5_component_bar_v_load .per{
+	opacity: 1
+}
 

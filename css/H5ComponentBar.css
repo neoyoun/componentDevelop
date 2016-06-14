@@ -1,19 +1,24 @@
 /* 柱状组件样式 */
-.h5_component_bar .line{height: 32px;}
+.h5_component_bar {font-family: 'microsoft yahei'}
+.h5_component_bar .line{height:16px;margin-top: 16px;line-height: 16px;}
 .h5_component_bar .line>div{float: left;}
-.h5_component_bar .line:after{content: '';display: block;clear: both}
 .h5_component_bar .line .rate{height: 16px;}
-.rate>.bg{border-radius: 4px;
-animation: process 1s linear;}
-.per{animation: fadeIn 1.2s}
-@keyframes process {
-	0% {width: 0% ;}
-	100% {width: 100% ;}
+.h5_component_bar .line:after{content: '';display: block;clear: both}
+.h5_component_bar .bg,.h5_component_bar_leave .bg{
+	border-radius: 4px;
+	opacity: 0;
+	width: 0;
+	transition:all 1s .5s;
 }
-@keyframes fadeIn {
-	0% {opacity: 0}
-	90% {opacity: 0}
-	100% {opacity: 1}
+.h5_component_bar_load .bg{
+	width: 100%;
+	opacity: 1
 }
-
+.h5_component_bar .per,.h5_component_bar_leave .per{
+	opacity: 0;
+	transition:all .5s 1.5s ease-in-out;
+}
+.h5_component_bar_load .per{
+	opacity: 1
+}
 

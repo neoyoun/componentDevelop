@@ -22,6 +22,8 @@
             left: 50%;
             top: 50%;
             margin: -270px 0 0 -170px;
+            overflow-y:hidden;
+            overflow-x:auto;
         }
     </style>
 
@@ -42,9 +44,36 @@
         </div>
 
         <script type="text/javascript">
+var cfg ={
+            type : 'bar_v',
+            height : 500,
+            width :600,
+            data :[
+            ['javascript',.45,'#ff7676'],
+            ['HTML/CSS',.21],
+            ['CSS3',.1],
+            ['Html5',.1],
+            ['jQuery',.04],
+            ['webapp',.03]
+            ],
+            css : { top : '60%' , opacity : 0 ,left : 32},
+            animateIn :{top : '10%', opacity : 1 },
+            animateOut :{top : '60%' , opacity : 0 },
+            delay:500
+         }
+         var h5 = new H5ComponentBar_v('mybar',cfg)
+         $('.iphone').append(h5)
 
-
+          var leave = true;
+            $('body').on('click',function () {
+                leave  = !leave
+                $('.h5_component').trigger( leave?'onLeave' : 'onLoad')
+            })
+         setTimeout(function () {
+              $('body').click()
+          }, 500)
         </script>
+
 
     </body>
 
