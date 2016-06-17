@@ -1,6 +1,6 @@
 /* 折线图组件样式 */
 .h5_component_polyline {
-
+overflow: hidden;
 }
 .h5_component_polyline canvas {
 	width: 100%;
@@ -8,23 +8,16 @@
 	position: absolute;
 	left:0;
 	top :0;
-	border:1px solid #333;
 }
 .h5_component_polyline .offcanvas{
 	border: none;
 	position: absolute;
 	bottom: 0;
-	transition : all 1s;
+	transition : all 1s ease-in;
 }
 .h5_component_polyline_load .offcanvas{
 	opacity: 1;
-	transform:scale(1);
-	left: 0;
-	top: 0
 }
 .h5_component_polyline_leave .offcanvas{
 	opacity: 0;
-	left: -50%;
-	top: 40%;
-	transform:scale(.1);
 }

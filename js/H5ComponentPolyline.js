@@ -1,23 +1,58 @@
 /* 柱图组件对象 */
 var H5ComponentPolyline = function (name , cfg) {
 	var component = new H5ComponentBase(name,cfg)
+	var w = cfg.width;
+	var h = cfg.height;
+	var step = cfg.data.length+1
 
 	var canvas = document.createElement('canvas')
-	var w = cfg.width;
-	var h = cfg.height
 	canvas.width = w;
 	canvas.height = h;
 	var ctx =  canvas.getContext("2d");
-	drawGrid(ctx,canvas.width,canvas.height)
+	ctx.beginPath();
+		for(var i=0;i<=step;i++){
+			ctx.moveTo(w*(i/step), 0);
+			ctx.lineTo(w*(i/step), h);
+		}
+		for(var i=0;i<=step;i++){
+			ctx.moveTo(0, (i/step)*h);
+			ctx.lineTo(w, (i/step)*h);
+		}
+ctx.lineWidth = 1;
+ctx.strokeStyle = "#565656";
+ctx.stroke();
+component.append(canvas)
+
+var canvas = document.createElement('canvas')
+	  
+var ctx =  canvas.getContext("2d");
+    canvas.width = ctx.width = w;
+	  canvas.height = ctx.height = h;
+	  ctx.strokeStyle = "#ffb2b2";
+	  ctx.lineWidth = 3;
+	  
+	  for(var i in cfg.data){
+	  	var x = (i/step)*w+w/step;
+	  	var y = h*(1-cfg.data[i][1]);
+	  	console.log(x,'==>',y)
+	  	ctx.beginPath();
+	  	ctx.arc(x, y, 10, 0, 2*Math.PI, true);
+	  	ctx.stroke();
+	  }
+	  ctx.beginPath();
+	  ctx.moveTo(w/step, h*(1-cfg.data[i][1]));
+	  for(var i in cfg.data){
+	  	var x = (i/step)*w+w/step;
+	  	var y = h*(1-cfg.data[i][1]);
+	  	ctx.lineTo(x, y);
+	  }
+	  ctx.stroke();
+	  
+	  
+component.append(canvas)
 
 
-var offCanvas = document.createElement('canvas')
-		offCanvas.setAttribute('class','offcanvas')
-    offCanvas.width = w;
-	  offCanvas.height = h;
-	var offCtx =  offCanvas.getContext("2d");
-
-drawMain(offCtx,offCanvas.width,offCanvas.height)
+//drawMain(offCtx,offCanvas.width,offCanvas.height)
   function drawMain(ctx,w,h) {
 		ctx.strokeStyle = "#f0f";
 		$.each(cfg.data,function  (idx,item) {
@@ -40,28 +75,7 @@ drawMain(offCtx,offCanvas.width,offCanvas.height)
 		ctx.fill();	
 		
   }
+window.ctx = ctx;
 
-
-	function drawGrid(ctx,w,h) {
-		for(var i=0.1;i<1;i=i+0.1){
-			ctx.beginPath();
-			ctx.moveTo(i*w, 0);
-			ctx.lineTo(i*w, h);
-			ctx.lineWidth = 1;
-	    ctx.strokeStyle = "#333";
-			ctx.stroke();
-		}
-		for(var j=0.1;j<1;j=j+0.1){
-			ctx.beginPath();
-			ctx.moveTo(0, j*h);
-			ctx.lineTo(w, j*h);
-			ctx.lineWidth = 1;
-	    ctx.strokeStyle = "#333";
-			ctx.stroke();
-		}
-	}
-
-component.get(0).appendChild(canvas)
-component.get(0).appendChild(offCanvas)
 	return component
 }
