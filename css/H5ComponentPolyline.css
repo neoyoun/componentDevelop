@@ -1,6 +1,5 @@
 /* 折线图组件样式 */
 .h5_component_polyline {
-overflow: hidden;
 }
 .h5_component_polyline canvas {
 	width: 100%;
@@ -9,15 +8,38 @@ overflow: hidden;
 	left:0;
 	top :0;
 }
-.h5_component_polyline .offcanvas{
-	border: none;
-	position: absolute;
-	bottom: 0;
-	transition : all 1s ease-in;
-}
-.h5_component_polyline_load .offcanvas{
-	opacity: 1;
-}
-.h5_component_polyline_leave .offcanvas{
+.h5_component_polyline .itemlist{
 	opacity: 0;
+	transition : all 1s 0.5s;
 }
+.h5_component_polyline_load .itemlist{
+	opacity: 1
+}
+.h5_component_polyline_leave .itemlist{
+	opacity: 0
+}
+.h5_component_polyline .item{
+	top:20px;
+	font-family: 'microsoft yahei';
+	transform : rotate(-15deg);
+	animation : shake 1s 0.5s infinite;
+	-webkit-animation : shake 1s 0.5s infinite;
+}
+@keyframes shake{
+	0% {transform : translateX(-50%) rotate(-15deg)}
+	50% {transform : translateX(-50%) rotate(-17deg)}
+	60% {transform : translateX(-50%) rotate(-13deg)}
+	70% {transform : translateX(-50%) rotate(-18deg)}
+	80% {transform : translateX(-50%) rotate(-14deg)}
+	90% {transform : translateX(-50%) rotate(-16deg)}
+	100% {transform : translateX(-50%) rotate(-15deg)}
+}
+/* @-webkit-keyframes shake{
+	0% {transform : translateX(-50%)  rotate(-15deg)}
+	50% {transform : translateX(-50%)  rotate(-17deg)}
+	60% {transform : translateX(-50%)  rotate(-13deg)}
+	70% {transform : translateX(-50%)  rotate(-18deg)}
+	80% {transform : translateX(-50%)  rotate(-14deg)}
+	90% {transform : translateX(-50%)  rotate(-16deg)}
+	100% {transform : translateX(-50%)  rotate(-15deg)}
+} */

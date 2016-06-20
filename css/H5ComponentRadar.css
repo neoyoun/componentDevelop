@@ -1,1 +1,7 @@
 /* 雷达图组件样式 */
+.h5_component_radar canvas{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+}

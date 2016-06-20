@@ -41,8 +41,36 @@
         </div>
 
         <script type="text/javascript">
+            var cfg = {
+                type : 'radar',
+                width : 600,
+                height : 600,
+                center : true,
+                css :{
+                    'top' : '20%'
+                },
+                data : [
+                ['JAVA', .41],
+                ['PHP', .30],
+                ['Go',.078],
+                ['Linux',.10],
+                ['Python',.18],
+                ['C',.056],
+                ['C++',.16]
+                ]
+            }
 
+            var h5 = new H5ComponentRadar('Myradar' , cfg)
+            $('.iphone').append(h5)
 
+            var leave = true;
+            $('body').on('click',function () {
+                leave  = !leave
+                $('.h5_component').trigger( leave?'onLeave' : 'onLoad')
+            })
+             setTimeout(function () {
+                  $('body').click()
+              }, 500)
         </script>
 
     </body>
