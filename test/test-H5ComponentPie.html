@@ -41,8 +41,35 @@
         </div>
 
         <script type="text/javascript">
-
-
+          var cfg = {
+            type : 'pie',
+            width : 400,
+            height : 400,
+            data : [
+            ['Android' , .51],
+            ['IOS' , .25],
+            ['Cocos2d-x', .17],
+            ['Unity-3D' , .07]
+            ],
+            center : true,
+            css : {
+                top : 100,
+                opacity : 0
+            },
+            animateIn : {top : 200 , opacity :1},
+            animateOut : {top : 100 , opacity :0},
+            delay : 500
+          }
+          var h5 = new H5ComponentPie ( 'mypie' , cfg)
+          $('.iphone').append(h5)
+          var leave = true;
+            $('body').on('click',function () {
+                leave  = !leave
+                $('.h5_component').trigger( leave?'onLeave' : 'onLoad')
+            })
+             setTimeout(function () {
+                  $('body').click()
+              }, 500)
         </script>
 
     </body>

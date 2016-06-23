@@ -1,7 +1,7 @@
 /* 雷达图组件对象 */
 var H5ComponentRadar = function  (name , cfg) {
 	var component = new H5ComponentBase(name , cfg)
-	var w = cfg.width, h = cfg.height,step = cfg.data.length,angle = 2/step*Math.PI,R=250;
+	var w = cfg.width, h = cfg.height,step = cfg.data.length,angle = 2/step*Math.PI,R = w/2;
 	var canvas = document.createElement('canvas')
       canvas.width = w
       canvas.height = h
@@ -27,8 +27,8 @@ var H5ComponentRadar = function  (name , cfg) {
 	  ctx.strokeStyle = "#ff7676";
 	  ctx.lineWidth = 4;
 	  for (var i = 0; i < cfg.data.length; i++) {
-	  	var x = R*cfg.data[i][1]*2 * Math.sin(angle * i);
-			var y = R*cfg.data[i][1]*2 * Math.cos(angle * i);
+	  	var x = R*cfg.data[i][1]*2 * Math.cos(angle * i);
+			var y = R*cfg.data[i][1]*2 * Math.sin(angle * i);
 			ctx.beginPath();
 			ctx.arc(x, y, 8, 0, 2*Math.PI, true);
 			ctx.fill();
@@ -39,16 +39,21 @@ var H5ComponentRadar = function  (name , cfg) {
 	ctx.fillStyle = "#333";
   ctx.moveTo(x, y);
   for (var i = 0; i < cfg.data.length; i++) {
-  	var x = R*cfg.data[i][1]*2 * Math.sin(angle * i);
-		var y = R*cfg.data[i][1]*2 * Math.cos(angle * i);
-		var textX = (R+20) * Math.sin(angle * i);
-		var textY = (R+20) * Math.cos(angle * i);
+  	var x = R*cfg.data[i][1]*2 * Math.cos(angle * i);
+		var y = R*cfg.data[i][1]*2 * Math.sin(angle * i);
 		ctx.lineTo(x, y);
-		ctx.font="20px Georgia";
-		ctx.fillText( (cfg.data[i][1]*100>>0)+'%' , x>0?(x+20):(x-40), y>0?(y+20):(y-10));
 		//ctx.fillText( (cfg.data[i][1]*100>>0)+'%' , x*1.2, y*1.2);
-		ctx.font="25px Microsoft Yahei";
-		ctx.fillText(cfg.data[i][0], textX>0?textX:(textX-20), textY>0?(textY+20):(textY-10));
+		var textX = (w/2+ R* Math.cos(angle * i))/2;
+		var textY = (h/2+ R* Math.sin(angle * i))/2;
+		if(per>=1){
+			ctx.font="20px Georgia";
+		  ctx.fillText( (cfg.data[i][1]*100>>0)+'%' ,x>0?(x+10):(x-30), y>0?y+20:y-10);
+			var text = $('<div class="text text_'+i+'"/>')
+			    text.text(cfg.data[i][0])
+			component.append(text)
+			text.css({left : textX+(textX-w/4)*0.1, 
+			    	    top: textY+(textY-h/4)*0.1})
+	  }
   };
   ctx.stroke();
   ctx.restore();
@@ -62,10 +67,10 @@ var H5ComponentRadar = function  (name , cfg) {
 		  ctx.beginPath();
 		  ctx.moveTo(0, 0);
 		for (var i = 0; i < cfg.data.length; i++) {
-			var x = R * Math.sin(angle * i);
-			var y = R * Math.cos(angle * i);
-			var nextX = R * Math.sin(angle * (i+1))
-			var nextY = R * Math.cos(angle * (i+1));
+			var x = R * Math.cos(angle * i);
+			var y = R * Math.sin(angle * i);
+			var nextX = R * Math.cos(angle * (i+1))
+			var nextY = R * Math.sin(angle * (i+1));
 			ctx.lineTo(x, y);
 			ctx.lineTo(nextX, nextY);
 			ctx.moveTo(0, 0);

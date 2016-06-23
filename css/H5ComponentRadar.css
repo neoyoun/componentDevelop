@@ -5,3 +5,21 @@
 	top: 0;
 	width: 100%;
 }
+.h5_component_radar .text{
+	position: absolute;
+	z-index: 9;
+	transition :all 1s .5s;
+	opacity: 0
+}
+.text_0{transition-delay : 0.5s;}
+.text_1{transition-delay : 0.6s;}
+.text_2{transition-delay : 0.7s;}
+.text_3{transition-delay : 0.8s;}
+.text_4{transition-delay : 0.9s;}
+.text_5{transition-delay : 1s;}
+.h5_component_radar_load .text{
+	opacity: 1
+}
+.h5_component_radar_leave .text{
+	opacity: 0
+}
