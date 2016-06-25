@@ -1,25 +1,54 @@
 /* 垂直柱状组件样式 */
-.h5_component_bar_v {font-family: 'microsoft yahei';transform:rotate(-90deg);}
-.h5_component_bar_v .line{height:16px;margin-top: 16px;line-height: 16px;}
-.h5_component_bar_v .line .name,.h5_component_bar_v .line .per {transform:rotate(90deg);}
-.h5_component_bar_v .line>div{float: left;}
-.h5_component_bar_v .line .rate{height: 16px;}
-.h5_component_bar_v .line:after{content: '';display: block;clear: both}
-.h5_component_bar_v .bg,.h5_component_bar_v_leave .bg{
+.h5_component_bar_v {font-family: 'microsoft yahei'}
+.h5_component_bar_v .line{
+	width: 16px;
+	float: left;
+	position: relative;
+}
+
+.h5_component_bar_v .line .rate{
+	width: 16px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform:translateX(-50%);
+}
+.h5_component_bar_v .bg{
+	width: 16px;
 	border-radius: 4px;
-	opacity: 0;
-	width: 0;
+	opacity: 1;
 	transition:all 1s .5s;
+	position: absolute;
+	bottom: 0;
+	height: 0;
+}
+.h5_component_bar_v_leave .bg{
+	opacity: 0;
+	height: 0;
 }
 .h5_component_bar_v_load .bg{
-	width: 100%;
-	opacity: 1
+	height: 100%;
+	opacity: 1;
 }
-.h5_component_bar_v .per,.h5_component_bar_v_leave .per{
+.h5_component_bar_v .per{
+	position: relative;
+	top: -20px;
 	opacity: 0;
 	transition:all .5s 1.5s ease-in-out;
+}
+.h5_component_bar_v_leave .per{
+	opacity: 0
 }
 .h5_component_bar_v_load .per{
 	opacity: 1
 }
-
+.h5_component_bar_v .name{
+	float: left;
+	position: relative;
+	top: 100%;
+	left: 50%;
+	transform:translateX(-50%);
+	-webkit-transform:translateX(-50%);
+	word-break:break-word;
+	max-width: 90%;
+}

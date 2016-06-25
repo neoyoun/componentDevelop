@@ -47,7 +47,8 @@
 var cfg ={
             type : 'bar_v',
             height : 500,
-            width :600,
+            width :500,
+            center : true,
             data :[
             ['javascript',.45,'#ff7676'],
             ['HTML/CSS',.21],
@@ -56,10 +57,11 @@ var cfg ={
             ['jQuery',.04],
             ['webapp',.03]
             ],
-            css : { top : '60%' , opacity : 0 ,left : 32},
-            animateIn :{top : '10%', opacity : 1 },
-            animateOut :{top : '60%' , opacity : 0 },
-            delay:500
+            css : { top : '40%' , opacity : 0},
+            animateIn :{top : '20%', opacity : 1 },
+            animateOut :{top : '40%' , opacity : 0 },
+            delay:500,
+
          }
          var h5 = new H5ComponentBar_v('mybar',cfg)
          $('.iphone').append(h5)
