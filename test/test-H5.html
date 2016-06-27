@@ -23,17 +23,29 @@
     <style type="text/css">
     body{margin:0;padding: 0}
     .h5_component_name_slogan.h5_component_base_load{
-        animation: rock 1s .5s;
+        animation: rock .5s .5s infinite;
+        -webkit-animation: rock .5s  infinite .5s;
     }
     @keyframes rock{
         0% {transform : rotate(3deg);}
         5% {transform : rotate(-4deg);}
-        15% {transform : rotate(0deg);}
-        20% {transform : rotate(2deg);}
+        15% {transform : rotate(2deg);}
+        20% {transform : rotate(-2deg);}
         30% {transform : rotate(-3deg);}
-        35% {transform : rotate(5deg);}
+        35% {transform : rotate(3deg);}
         40% {transform : rotate(-2deg);}
-        70% {transform : rotate(0deg);}
+        50% {transform : rotate(0deg);}
+        100% {transform : rotate(0deg);}
+    }
+    @-webkit-keyframes rock{
+        0% {transform : rotate(3deg);}
+        5% {transform : rotate(-4deg);}
+        15% {transform : rotate(2deg);}
+        20% {transform : rotate(-2deg);}
+        30% {transform : rotate(-3deg);}
+        35% {transform : rotate(3deg);}
+        40% {transform : rotate(-2deg);}
+        50% {transform : rotate(0deg);}
         100% {transform : rotate(0deg);}
     }
     </style>
@@ -118,7 +130,6 @@
                         css : {opacity : 0,right: '-50px',bottom : '-50px'},
                         animateIn : {right : 0 ,bottom : 0,opacity : 1},
                         animateOut :{opacity : 0,right: '-50px',bottom : '-50px'},
-                       
                     })
                     .addComponent('footer',footerComponent)
 
@@ -178,7 +189,7 @@
                     })
                     .addComponent('footer',footerComponent)
 
-                  .addPage('Page-3')  
+                  .addPage()  
                     .addComponent('caption',{
                         text:'课程难度分布',
                          css : {
@@ -189,20 +200,20 @@
                         animateOut : {top : '-100px',opacity : 0}
                     })
                     .addComponent('lever',pointCfg)
-                    .addComponent('lever-desc',{
+                    .addComponent('message',{
                         text : '课程难度分布，中级课程占到45%',
                         width : 360,
                         center : true,
                         css :{
-                            fontSize : '12px',
+                            fontSize : '15px',
                             textAlign : 'center',
                             color : '#000',
-                            bottom : 0,
+                            bottom : 70,
                             opacity : 0
                         },
-                        animateIn : { opacity : 1 , bottom : 70},
-                        animateOut : { opacity : 0 , bottom : 0},
-                        delay : 300
+                        animateIn : { opacity : 1},
+                        animateOut : { opacity : 0},
+                        delay : 1500
 
                     })
                     .addComponent('footer',footerComponent)           

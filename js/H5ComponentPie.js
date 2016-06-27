@@ -90,7 +90,7 @@ var H5ComponentPie = function  (name,cfg) {
 	component.on('onLeave' , function  () {
 		var  per = 1,startTime = Date.now(),T = 1500;
 		requestAnimationFrame(function step () {
-			per = Math.max(0, (1-(Date.now() - startTime)/T))
+			per = Math.max(0, (1-(Date.now() - startTime)/T)* Math.random())
 				drawMasking(per)
 			if(per > 0 ) {requestAnimationFrame(step)}
 		})

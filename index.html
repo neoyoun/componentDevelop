@@ -72,12 +72,11 @@
     <body>
 
     <div class="loading">
-
-        <div class="double-bounce1"></div>
-        <div class="double-bounce2"></div>
-
-        <div id="rate">0%</div>
-
+        <div class="bounces-group">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="rate">0%</div>
+        </div>
     </div>
 
 
@@ -99,7 +98,9 @@
     </script>
     <!-- 主要逻辑 -->
     <script type="text/javascript">
-
+        /*setInterval(function () {
+            console.log($(document).height())
+        }, 20)*/
         $(function  () {
            
             var h5 = new H5();
@@ -285,7 +286,7 @@
                                 },
                                 center : true,
                             }
-                )
+                          )
                 .addComponent('msg',{
                     text:'前端课程 Javascript 占到40%',
                     css:{
@@ -479,8 +480,7 @@
                          $.fn.fullpage.moveTo( 1 )
                     }
                 })
-
-            .loader( [ 'imgs/tail_back.png','imgs/tail_share.png','imgs/tail_slogan.png' ] );
+        .loader( [ 'imgs/face_logo.png','imgs/face_slogan.png','imgs/face_img_left.png','imgs/face_img_right.png','imgs/tail_back.png','imgs/tail_share.png','imgs/tail_slogan.png' ] );
 
         });
     </script>
