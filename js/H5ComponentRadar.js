@@ -35,7 +35,6 @@ var H5ComponentRadar = function  (name , cfg) {
 	  };
   
   ctx.beginPath();
-  
 	ctx.fillStyle = "#333";
   ctx.moveTo(x, y);
   for (var i = 0; i < cfg.data.length; i++) {
@@ -50,9 +49,10 @@ var H5ComponentRadar = function  (name , cfg) {
 		  ctx.fillText( (cfg.data[i][1]*100>>0)+'%' ,x>0?(x+10):(x-30), y>0?y+20:y-10);
 			var text = $('<div class="text text_'+i+'"/>')
 			    text.text(cfg.data[i][0])
+			textX = textX>(w/2)?textX:textX-(w/2 - textX)*.1;
+			textY = textY>(h/2)?textY:textY-(h/2 - textY)*.1;
+			text.css({left : textX,top: textY})
 			component.append(text)
-			text.css({left : textX+(textX-w/4)*0.1, 
-			    	    top: textY+(textY-h/4)*0.1})
 	  }
   };
   ctx.stroke();
@@ -79,14 +79,14 @@ var H5ComponentRadar = function  (name , cfg) {
 		ctx.fill();
 		ctx.lineWidth = 4;
 	  ctx.strokeStyle = "#eee";
-		  ctx.stroke();
-		  ctx.restore();
+	  ctx.stroke();
+	  ctx.restore();
  }
- component.on('onLoad' , function  () {
+ component.on('onLoad' , function () {
 		var  per = 0,startTime = Date.now(),T = 1000,rot = -2*Math.PI;
 		requestAnimationFrame(function step () {
 			per = Math.min(1.0 , (Date.now() - startTime)/T)
-			rot = 2*Math.PI*(per-1)
+			rot = 2*Math.PI*(1-per)
 			drawMain(per,rot)
 			if(per < 1) {requestAnimationFrame(step)}
 		})
@@ -95,7 +95,7 @@ var H5ComponentRadar = function  (name , cfg) {
 		var  per = 1,startTime = Date.now(),T = 1000,rot = 0;
 		requestAnimationFrame(function step () {
 			per = Math.max(0, (1-(Date.now() - startTime)/T))
-			rot = 2*Math.PI*(per-1)
+			rot = 2*Math.PI*(1-per)
 			drawMain(per,rot)
 			if(per > 0 ) {requestAnimationFrame(step)}
 		})

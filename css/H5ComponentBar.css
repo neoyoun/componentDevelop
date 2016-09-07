@@ -4,6 +4,7 @@
 	height:16px;
 	margin-top: 16px;
 	line-height: 16px;
+	padding-left: 100px;
 }
 .h5_component_bar .line>div{
 	float: left;
@@ -17,6 +18,7 @@
 	border-radius: 4px;
 	opacity: 0;
 	width: 0;
+	height: 100%;
 	transition:all 1s .5s;
 }
 .h5_component_bar_leave .bg{
@@ -40,8 +42,8 @@
 	opacity: 1
 }
 .h5_component_bar .name{
-	width: 70px;
+	width: 90px;
 	text-align: right;
-	margin-left: -70px;
-	margin-right: 5px;
+	margin-left: -100px;
+	margin-right: 10px;
 }

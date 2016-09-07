@@ -19,11 +19,8 @@
 	opacity: 0
 }
 .h5_component_polyline .item{
-	top:20px;
+	float: left;
 	font-family: 'microsoft yahei';
-	transform : rotate(-15deg);
-	animation : shake 1s 0.5s infinite;
-	-webkit-animation : shake 1s 0.5s infinite;
 }
 @keyframes shake{
 	0% {transform : translateX(-50%) rotate(-15deg)}
@@ -34,12 +31,3 @@
 	90% {transform : translateX(-50%) rotate(-16deg)}
 	100% {transform : translateX(-50%) rotate(-15deg)}
 }
-/* @-webkit-keyframes shake{
-	0% {transform : translateX(-50%)  rotate(-15deg)}
-	50% {transform : translateX(-50%)  rotate(-17deg)}
-	60% {transform : translateX(-50%)  rotate(-13deg)}
-	70% {transform : translateX(-50%)  rotate(-18deg)}
-	80% {transform : translateX(-50%)  rotate(-14deg)}
-	90% {transform : translateX(-50%)  rotate(-16deg)}
-	100% {transform : translateX(-50%)  rotate(-15deg)}
-} */

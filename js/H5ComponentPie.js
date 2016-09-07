@@ -1,6 +1,7 @@
 /* 饼图组件对象 */
 var H5ComponentPie = function  (name,cfg) {
 	var component = new H5ComponentBase (name , cfg);
+	debugger;
 	var w = cfg.width, h = cfg.height,step = cfg.data.length,r = w/2;
 	var sAngle = 1.5 * Math.PI ,aAngle = 2 * Math.PI,eAngle = 0;
 

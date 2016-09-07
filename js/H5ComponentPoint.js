@@ -1,7 +1,7 @@
 /* 散点图表组件对象 */
-var H5ComponentPoint = function  (name , cfg) {
-	var component = new H5ComponentBase (name, cfg)
-	var base = cfg.data[0][1]
+var H5ComponentPoint = function (name , cfg) {
+	var component = new H5ComponentBase (name, cfg);
+	var base = cfg.data[0][1];
 
 	$.each(cfg.data , function  (idx , item) {
 		var point = $('<div class="point point_'+idx +'">')
@@ -28,7 +28,7 @@ var H5ComponentPoint = function  (name , cfg) {
 	})
 
 	component.on('onLoad' , function  () {
-		component.find('.point').each(function  (idx , item) {
+		component.find('.point').each(function (idx , item) {
 			$(item).css('left' , $(item).data('left')).css('top' , $(item).data('top')).css('opacity' , 1)
 		})
 	})
