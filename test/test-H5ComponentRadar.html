@@ -47,7 +47,8 @@
                 height : 410,
                 center : true,
                 css :{
-                    'top' : '33%'
+                    'top' : '33%',
+                    'opacity' :0.5
                 },
                 data : [
                 ['JAVA', .41],
@@ -57,7 +58,9 @@
                 ['Python',.18],
                 ['C',.056],
                 ['C++',.16]
-                ]
+                ],
+                animateIn:{opacity:1},
+                animateOut:{opacity:0.5}
             }
 
             var h5 = new H5ComponentRadar('Myradar' , cfg)

@@ -1,1 +1,24 @@
 /* 环图组件样式 */
+.sub-container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.sub-container::after{
+	content: '';
+	display: table;
+	clear: both;
+}
+.item-container{
+	box-sizing: border-box;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: center;
+	margin-bottom: 5px;
+}
+.item-container .item-desc{
+	font-size: 14px;
+}
+canvas{
+	width: 100%;
+}

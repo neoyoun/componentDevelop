@@ -29,15 +29,15 @@ var H5ComponentPie = function  (name,cfg) {
 	    ctx.save();
 	    ctx.translate(w/2, h/2);
 	    for (var i = 0; i < step; i++) {
-	    	var item = cfg.data[i]
-	    	eAngle = sAngle + item[1]*aAngle;
-	    	ctx.beginPath();
-	    	ctx.fillStyle = item[2] || color.shift();
-	    	ctx.moveTo(0, 0);
-	      ctx.arc(0, 0, r, sAngle, eAngle);
-	      ctx.fill();
-	      var textAngle = (eAngle+sAngle)/2
-	      sAngle = eAngle
+			    	var item = cfg.data[i]
+			    	eAngle = sAngle + item[1]*aAngle;
+			    	ctx.beginPath();
+			    	ctx.fillStyle = item[2] || color.shift();
+			    	ctx.moveTo(0, 0);
+			      ctx.arc(0, 0, r, sAngle, eAngle);
+			      ctx.fill();
+			      var textAngle = (eAngle+sAngle)/2
+			      sAngle = eAngle
 
         /*开始添加文本*/
         var textX = w/4 + r * Math.cos(textAngle)/2
@@ -77,22 +77,24 @@ var H5ComponentPie = function  (name,cfg) {
 	      ctx.restore();
 	    }
 
-	  component.on('onLoad' , function  () {
+	component.on('onLoad' , function  () {
 		setTimeout(function () {
 			var per = 0,startTime = Date.now(),T = 1500;
 			requestAnimationFrame(function step () {
 			per = Math.min(1.0 , (Date.now() - startTime)/T)
-				drawMasking(per)
+				
+			drawMasking(per)
 			if(per < 1) {requestAnimationFrame(step)}
 		})
 		}, 1000)
 		
 	})
 	component.on('onLeave' , function  () {
-		var  per = 1,startTime = Date.now(),T = 1500;
+		var per = 1,startTime = Date.now(),T = 1500;
 		requestAnimationFrame(function step () {
 			per = Math.max(0, (1-(Date.now() - startTime)/T))
-				drawMasking(per)
+			
+			drawMasking(per)
 			if(per > 0 ) {requestAnimationFrame(step)}
 		})
 	})	

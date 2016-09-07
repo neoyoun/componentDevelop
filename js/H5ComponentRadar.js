@@ -45,7 +45,7 @@ var H5ComponentRadar = function  (name , cfg) {
 		var textX = (w/2+ R* Math.cos(angle * i))/2;
 		var textY = (h/2+ R* Math.sin(angle * i))/2;
 		if(per>=1){
-			ctx.font="20px Georgia";
+		  ctx.font="20px Georgia";
 		  ctx.fillText( (cfg.data[i][1]*100>>0)+'%' ,x>0?(x+10):(x-30), y>0?y+20:y-10);
 			var text = $('<div class="text text_'+i+'"/>')
 			    text.text(cfg.data[i][0])

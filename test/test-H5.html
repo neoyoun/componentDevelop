@@ -64,15 +64,15 @@
                 delay : 400
             }
             var footerComponent = {
-                        type : 'base',
-                        bg:'../imgs/footer.png',
-                        css:{
-                            opacity:0,
-                            bottom:0
-                        },
-                        animateIn:{bottom : 0,opacity : 1},
-                        animateOut:{bottom : 0,opacity : 0},
-                    }
+                type : 'base',
+                bg:'../imgs/footer.png',
+                css:{
+                    opacity:0,
+                    bottom:0
+                },
+                animateIn:{bottom : 0,opacity : 1},
+                animateOut:{bottom : 0,opacity : 0},
+                }
             var polylineCfg = {
                 type : 'polyline',
                 width:475,
@@ -83,14 +83,33 @@
                     top : '45%'
                 },
                 data : [
-                ['前端开发', .28],
-                ['移动开发', .42],
-                ['后端开发', .39],
-                ['数据处理', .18],
-                ['图像处理', .27]
+                  ['前端开发', .28],
+                  ['移动开发', .42],
+                  ['后端开发', .39],
+                  ['数据处理', .18],
+                  ['图像处理', .27]
                 ],
                 delay : 500
-            }
+              }
+            var pieCfg = {
+                type : 'pie',
+                width : 400,
+                height : 400,
+                data : [
+                ['Android' , .51],
+                ['IOS' , .25],
+                ['Cocos2d-x', .17],
+                ['Unity-3D' , .07]
+                ],
+                center : true,
+                css : {
+                    top : 100,
+                    opacity : 0
+                },
+                animateIn : {top : 200 , opacity :1},
+                animateOut : {top : 100 , opacity :0},
+                delay : 500
+              }
             var pointCfg = {
                 type : 'point',
                 data : [
@@ -115,15 +134,15 @@
                 height : 600,
                 center:true,
                 data :[
-                ['javascript',.45,'#ff7676'],
-                ['HTML/CSS',.21],
-                ['CSS3',.1],
-                ['Html5',.1],
-                ['jQuery',.04],
-                ['webapp',.03],
-                ['Node.js',.03],
-                ['Bootstrap',.02],
-                ['AngularJs',.02]
+                  ['javascript',.45,'#ff7676'],
+                  ['HTML/CSS',.21],
+                  ['CSS3',.1],
+                  ['Html5',.1],
+                  ['jQuery',.04],
+                  ['webapp',.03],
+                  ['Node.js',.03],
+                  ['Bootstrap',.02],
+                  ['AngularJs',.02]
                 ],
                 css : { top : 0 ,left :'30%', opacity : 0 },
                 animateIn :{top : '32%', opacity : 1 },
@@ -153,17 +172,21 @@
                 height : 410,
                 center : true,
                 css :{
-                    'top' : '33%'
+                    'top' : '33%',
+                    'opacity' : .5
                 },
                 data : [
-                ['JAVA', .41],
-                ['PHP', .30],
-                ['Go',.078],
-                ['Linux',.10],
-                ['Python',.18],
-                ['C',.056],
-                ['C++',.16]
-                ]
+                  ['JAVA', .41],
+                  ['PHP', .30],
+                  ['Go',.078],
+                  ['Linux',.10],
+                  ['Python',.18],
+                  ['C',.056],
+                  ['C++',.16]
+                ],
+                animateIn : {opacity: 1},
+                animateOut : {opacity: .5}
+
             }
             var captionCfg = {
                 text:'default caption',
@@ -258,26 +281,12 @@
                         animateOut : {bottom : '-7%', opacity : 0},
                         center : true,
                     })
-                  .addPage('point-page')
-                    .addComponent('caption',$.extend(captionCfg,{text:'课程难度分布'}))
-                    .addComponent('lever',pointCfg)
-                    .addComponent('lever-desc',{
-                        text : '课程难度分布，中级课程占到45%',
-                        css :{
-                            width:'100%',
-                            fontSize : '14px',
-                            fontWeight:'bold',
-                            textAlign : 'center',
-                            color : '#000',
-                            bottom : 0,
-                            opacity : 0
-                        },
-                        animateIn : { opacity : 1 , bottom : '13%'},
-                        animateOut : { opacity : 0 , bottom : 0},
-                        delay : 300
-                    })
                   .addPage('poly-page')
+                    .addComponent('caption',$.extend(captionCfg,{text:'课程方向分布'}))
                     .addComponent('poliline',polylineCfg)
+                  .addPage('pie-page')
+                    .addComponent('caption',$.extend(captionCfg,{text:'移动开发'}))
+                    .addComponent('pie',pieCfg)
                   .addPage('bar-page')
                     .addComponent('caption',$.extend(captionCfg,{text:'前端开发'}))
                     .addComponent('bar',barCfg)
@@ -302,6 +311,24 @@
                         animateOut : { opacity : 0 , bottom : 0},
                         delay : 300
                     })  
+                  .addPage('point-page')
+                    .addComponent('caption',$.extend(captionCfg,{text:'课程难度分布'}))
+                    .addComponent('lever',pointCfg)
+                    .addComponent('lever-desc',{
+                        text : '课程难度分布，中级课程占到45%',
+                        css :{
+                            width:'100%',
+                            fontSize : '14px',
+                            fontWeight:'bold',
+                            textAlign : 'center',
+                            color : '#000',
+                            bottom : 0,
+                            opacity : 0
+                        },
+                        animateIn : { opacity : 1 , bottom : '13%'},
+                        animateOut : { opacity : 0 , bottom : 0},
+                        delay : 300
+                    })
               .loader(3)
         })
     </script>

@@ -1,12 +1,13 @@
 /* 柱图组件对象 */
 var H5ComponentPolyline = function (name , cfg) {
 	var component = new H5ComponentBase(name,cfg);
+	debugger;
 	var w = cfg.width;
 	var h = cfg.height;
 	var step = cfg.data.length-1;
 
-//画底图
-	var canvas = document.createElement('canvas')
+//画底图,垂直方向格子比水平方向多一个
+	var canvas = document.createElement('canvas');
 	canvas.width = w;
 	canvas.height = h;
 	
@@ -25,7 +26,7 @@ var H5ComponentPolyline = function (name , cfg) {
 		ctx.fill();
 	}
 }
-	ctx.beginPath();
+		ctx.beginPath();
 		for(var i=0;i<=step;i++){
 			ctx.moveTo(w*(i/step), 0);
 			ctx.lineTo(w*(i/step), h);
@@ -38,13 +39,43 @@ var H5ComponentPolyline = function (name , cfg) {
 ctx.lineWidth = 2;
 ctx.strokeStyle = "#d7d7d7";
 ctx.stroke();
-component.append(canvas)
+component.append(canvas);
+
+//填充项名
+var itemlist = $('<div class="itemlist">');
+		itemlist.css({'position':'relative','top':h/2+20,'left':0,width:(w/step*(step+1))/2+'px'})
+for (var i in cfg.data) {
+	var item = $('<div class="item item_'+i+'">'+cfg.data[i][0]+'</div>')
+	item.css({'width':(100/(step+1))+'%','float':'left','transform':'translateX(-50%)'})
+	item.appendTo(itemlist)
+}
+component.append(itemlist);
+
+//数据层 canvas 画布
 var canvas = document.createElement('canvas')
-	  
 var ctx =  canvas.getContext("2d");
     canvas.width = ctx.width = w;
 		canvas.height = ctx.height = h;
 
+
+component.on('onLoad' , function  () {
+	var per = 0,startTime = Date.now(),T = 1000;
+	requestAnimationFrame(function step () {
+		per = Math.min(1.0 , (Date.now() - startTime)/T)
+		drawMain(per)
+		if(per < 1) {requestAnimationFrame(step)}
+	})
+})
+component.on('onLeave' , function  () {
+	var  per = 1,startTime = Date.now(),T = 1000;
+	requestAnimationFrame(function step () {
+		per = Math.max(0, (1-(Date.now() - startTime)/T))
+		drawMain(per)
+		if(per > 0 ) {requestAnimationFrame(step)}
+	})
+})
+
+//数据层绘图方法，在 onLoad 事件触发后反复执行 清除画布->绘制新数据
 function drawMain (per) {
 		ctx.clearRect(0, 0, w, h);
 		/*画线和阴影*/
@@ -77,40 +108,15 @@ function drawMain (per) {
 	  ctx.strokeStyle = "#ffb2b2";
 	  ctx.fillStyle = "#fff";
 	  ctx.lineWidth = 3;
-	 for(var i in cfg.data){
-	  	var x = (i/step)*w;
-	  	var y = h*(1-cfg.data[i][1]*per);
-	  	ctx.beginPath();
-	  	ctx.arc(x, y, 10, 0, 2*Math.PI, true);
-	  	ctx.fill();
-	  	ctx.stroke();
-	  }
+		for(var i in cfg.data){
+		  	var x = (i/step)*w;
+		  	var y = h*(1-cfg.data[i][1]*per);
+		  	ctx.beginPath();
+		  	ctx.arc(x, y, 10, 0, 2*Math.PI, true);
+		  	ctx.fill();
+		  	ctx.stroke();
+		  }
 component.append(canvas)
 }
-var itemlist = $('<div class="itemlist">')
-		itemlist.css({'position':'relative','top':h/2+20,'left':0,width:(w/step*(step+1))/2+'px'})
-for (var i in cfg.data) {
-	var item = $('<div class="item item_'+i+'">'+cfg.data[i][0]+'</div>')
-	item.css({'width':(100/(step+1))+'%','float':'left','transform':'translateX(-50%)'})
-	item.appendTo(itemlist)
-}
-component.append(itemlist)
-component.on('onLoad' , function  () {
-		var  per = 0,startTime = Date.now(),T = 1000;
-		requestAnimationFrame(function step () {
-			per = Math.min(1.0 , (Date.now() - startTime)/T)
-			drawMain(per)
-			if(per < 1) {requestAnimationFrame(step)}
-		})
-	})
-	component.on('onLeave' , function  () {
-		var  per = 1,startTime = Date.now(),T = 1000;
-		requestAnimationFrame(function step () {
-			per = Math.max(0, (1-(Date.now() - startTime)/T))
-			drawMain(per)
-			if(per > 0 ) {requestAnimationFrame(step)}
-		})
-	})
-
 return component
 }

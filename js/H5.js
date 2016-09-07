@@ -32,14 +32,13 @@ var H5 = function () {
 				component = new H5ComponentBase(name,cfg);
 			break;
 			case 'point' :
-			  component = new H5ComponentPoint(name,cfg);
-			break;
-			case 'polyline' :
-				component = new H5ComponentPolyline(name,cfg);
-				console.log(component[0]);
+		  	component = new H5ComponentPoint(name,cfg);
 			break;
 			case 'pie' :
 				component = new H5ComponentPie(name,cfg);
+			break;
+			case 'polyline' :
+				component = new H5ComponentPolyline(name,cfg);
 			break;
 			case 'bar' :
 				component = new H5ComponentBar(name,cfg);
@@ -64,12 +63,12 @@ var H5 = function () {
 
 		this.el.fullpage({
       'css3':true,
-      onLeave: function (index,nextIndex,direction) {
-		            $(this).find('.h5_component').trigger('onLeave')
+    onLeave: function (index,nextIndex,direction) {
+        $(this).find('.h5_component').trigger('onLeave')
 		        },
-      afterLoad: function (anchorLink,index) {
-			          $(this).find('.h5_component').trigger('onLoad')
-			          $(this).find('.h5_component_name_footer').height($(document).width()*20/320 + 'px')
+    afterLoad: function (anchorLink,index) {
+        $(this).find('.h5_component').trigger('onLoad')
+        $(this).find('.h5_component_name_footer').height($(document).width()*20/320 + 'px')
 			      }
             })
 		this.page[0].find('.h5_component').trigger('onLoad')
@@ -78,6 +77,5 @@ var H5 = function () {
 			$.fn.fullpage.moveTo( firstPage )
 		}
 	}
-
 	return this
 }
