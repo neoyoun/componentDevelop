@@ -186,7 +186,32 @@
                 ],
                 animateIn : {opacity: 1},
                 animateOut : {opacity: .5}
-
+            }
+            var ringCfg = {
+                type : 'ring',
+                width : 460,
+                height : 680,
+                data:[
+                    ['前端开发',.43],
+                    ['后端开发',.28],
+                    ['移动开发',.22],
+                    ['数据处理',.04],
+                    ['图像处理',.03],
+                ],
+                overRatio :.64,
+                css : {
+                    top:'30%',
+                    opacity:0
+                },
+                animateIn:{
+                    opacity:1
+                },
+                animateOut:{
+                    opacity:0
+                },
+                center : true,
+                duration : 1000,
+                delay:300
             }
             var captionCfg = {
                 text:'default caption',
@@ -310,7 +335,10 @@
                         animateIn : { opacity : 1 , bottom : '13%'},
                         animateOut : { opacity : 0 , bottom : 0},
                         delay : 300
-                    })  
+                    })
+                  .addPage('ring-page')
+                    .addComponent('caption',$.extend(captionCfg,{text:'报名人数过万课程'}))
+                    .addComponent('ring' , ringCfg)
                   .addPage('point-page')
                     .addComponent('caption',$.extend(captionCfg,{text:'课程难度分布'}))
                     .addComponent('lever',pointCfg)
@@ -329,7 +357,7 @@
                         animateOut : { opacity : 0 , bottom : 0},
                         delay : 300
                     })
-              .loader(3)
+              .loader(8)
         })
     </script>
 </body>

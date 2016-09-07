@@ -44,7 +44,7 @@ var H5ComponentBase = function ( name, cfg) {
 		/*已有的 name className 会被忽略 下同*/
 		setTimeout(function () {
 		  component.addClass(cls+'_load').removeClass(cls + '_leave')
-		  cfg.animateIn && component.animate( cfg.animateIn )
+		  cfg.animateIn && component.animate( cfg.animateIn)
 		}, cfg.delay || 0)
 		
 		return false

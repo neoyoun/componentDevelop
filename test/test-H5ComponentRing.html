@@ -62,13 +62,15 @@
                 },
                 animateIn:{
                     opacity:1,
-                    top:200,
+                    top:'30%',
                 },
                 animateOut:{
                     opacity:0,
-                    top:100,
+                    top:0,
                 },
                 center : true,
+                duration : 1500,
+                delay:500
             }
 
             var h5 = new H5ComponentRing( 'myBarComponent', cfg );
@@ -80,6 +82,9 @@
                 leave = !leave;
                 $('.h5_component').trigger( leave ? 'onLeave' : 'onLoad' )
             });
+            setTimeout(function () {
+               $('body').click();
+            }, 500)
 
         </script>
 

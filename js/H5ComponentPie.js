@@ -1,7 +1,6 @@
 /* 饼图组件对象 */
 var H5ComponentPie = function  (name,cfg) {
 	var component = new H5ComponentBase (name , cfg);
-	debugger;
 	var w = cfg.width, h = cfg.height,step = cfg.data.length,r = w/2;
 	var sAngle = 1.5 * Math.PI ,aAngle = 2 * Math.PI,eAngle = 0;
 
@@ -79,7 +78,7 @@ var H5ComponentPie = function  (name,cfg) {
 
 	component.on('onLoad' , function  () {
 		setTimeout(function () {
-			var per = 0,startTime = Date.now(),T = 1500;
+			var per = 0,startTime = Date.now(),T = 1000;
 			requestAnimationFrame(function step () {
 			per = Math.min(1.0 , (Date.now() - startTime)/T)
 				
@@ -90,10 +89,9 @@ var H5ComponentPie = function  (name,cfg) {
 		
 	})
 	component.on('onLeave' , function  () {
-		var per = 1,startTime = Date.now(),T = 1500;
+		var per = 1,startTime = Date.now(),T = 1000;
 		requestAnimationFrame(function step () {
 			per = Math.max(0, (1-(Date.now() - startTime)/T))
-			
 			drawMasking(per)
 			if(per > 0 ) {requestAnimationFrame(step)}
 		})

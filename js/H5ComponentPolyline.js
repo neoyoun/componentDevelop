@@ -1,7 +1,6 @@
 /* 柱图组件对象 */
 var H5ComponentPolyline = function (name , cfg) {
 	var component = new H5ComponentBase(name,cfg);
-	debugger;
 	var w = cfg.width;
 	var h = cfg.height;
 	var step = cfg.data.length-1;
