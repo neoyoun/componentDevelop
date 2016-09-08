@@ -57,7 +57,7 @@ var H5ComponentRing = function (name , cfg) {
  *在组件载入时填充下半部分，切换组件时清空
  *由此会带来额外的DOM操作，并不是好办法；
  */
-		function fillSubContainer	() {
+		function fillSubContainer () {
 			$.each(cfg.data , function appendItem(idx , item) {
 				var itemContainer = $('<div class="item-container">');
 				var canvas = document.createElement('canvas');
@@ -65,7 +65,6 @@ var H5ComponentRing = function (name , cfg) {
 				itemContainer.css({'width':w/6,float:'left'});
 				itemContainer.append(canvas);
 				drawItem(canvas , item[1],0);
-				setTimeout(function () {
 					var per=0 , startTime = Date.now(),T= cfg.duration+cfg.delay || 1000;
 					var timer = setInterval(function () {
 						per = (Date.now() - startTime)/T;
@@ -74,7 +73,6 @@ var H5ComponentRing = function (name , cfg) {
 							clearInterval(timer);
 						}
 					}, 20)
-				}, cfg.delay*2 || 500)
 				itemContainer.append('<div class="item-desc">'+item[0]+'</div>');
 				itemContainer.appendTo(subContainer);
 			})

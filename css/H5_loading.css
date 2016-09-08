@@ -1,1 +1,88 @@
 /*loading动画样式*/
+.loading{
+	position: absolute;
+	left: 50%;
+	top: 40%;
+	width: 100px;
+	height: 100px;
+	margin-left: -50px;
+	text-align: center;
+}
+.double-bounce1,.double-bounce2{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.double-bounce1{
+	background-color: #044a84;
+	animation: bounce ease-in-out 2s infinite 1s;
+}
+.double-bounce2{
+	background-color: #0981e4;
+	animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+	0%,100% {
+		transform:scale(0);
+	}
+	50%{
+		transform: scale(1);
+	}
+}
+/*电流动画效果*/
+.rect-container {
+  width: 100%;
+  height: 70px;
+  margin-top: 20px;
+}
+.rect-container::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.rect-container .rect {
+  float: left;
+  height: 50px;
+  background-color: #16c32b;
+  width: 13.33333px;
+  margin-right: 6.66667px;
+}
+.rect-container .rect-1 {
+  animation: rect 2s ease-in-out infinite 0s;
+}
+.rect-container .rect-2 {
+  animation: rect 2s ease-in-out infinite 0.4s;
+}
+.rect-container .rect-3 {
+  animation: rect 2s ease-in-out infinite 0.8s;
+}
+.rect-container .rect-4 {
+  animation: rect 2s ease-in-out infinite 1.2s;
+}
+.rect-container .rect-5 {
+  animation: rect 2s ease-in-out infinite 1.6s;
+}
+
+@keyframes rect {
+  0% {
+    transform: scale(1, 1);
+  }
+  20% {
+    transform: scale(1, 1.6);
+  }
+  50% , 100% {
+    transform: scale(1, 1);
+  }
+}
+
+/*# sourceMappingURL=rectAnimation.css.map */
+
+.loading .rate{
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	font:14px/2 "microsoft yahei";
+}

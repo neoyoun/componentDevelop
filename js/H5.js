@@ -19,6 +19,7 @@ var H5 = function () {
 		}
 		page.appendTo(this.el)
 		this.page.push( page )
+	  this.addComponent('footer',{});
 		return this
 	},
 	this.addComponent = function (name,cfg) {
@@ -60,22 +61,23 @@ var H5 = function () {
 	},
 	/*h5对象初始化呈现*/
 	this.loader = function (firstPage) {
-
 		this.el.fullpage({
       'css3':true,
-    onLeave: function (index,nextIndex,direction) {
-        $(this).find('.h5_component').trigger('onLeave')
-		        },
-    afterLoad: function (anchorLink,index) {
-        $(this).find('.h5_component').trigger('onLoad')
-        $(this).find('.h5_component_name_footer').height($(document).width()*20/320 + 'px')
-			      }
-            })
+	    onLeave: function (index,nextIndex,direction) {
+	        $(this).find('.h5_component').trigger('onLeave')
+			        },
+	    afterLoad: function (anchorLink,index) {
+	        $(this).find('.h5_component').trigger('onLoad');
+	        $(this).find('.h5_component_name_footer').height($(document).width()*20/320 + 'px')
+				      }
+      })
 		this.page[0].find('.h5_component').trigger('onLoad')
 		this.el.show()
 		if( firstPage ){
 			$.fn.fullpage.moveTo( firstPage )
 		}
 	}
+
+	this.loader = typeof H5_Loading === 'function'? H5_Loading : this.loader;
 	return this
 }

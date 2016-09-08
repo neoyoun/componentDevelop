@@ -5,7 +5,7 @@ body{width: 100%;height: 100%;font-family:"Microsoft Yahei" }
 .h5_page{position: relative;width: 100%;height: 100%}
 .h5_page{background-image: url('../imgs/page_bg.png');}
 .h5_page_face{background-image: url('../imgs/face_bg.png')}
-.h5_component_name_footer{position: fixed;width: 100%;height: 20px;bottom: 0;opacity: 0;background-image: url('../imgs/footer.png') ;}
+.h5_component_name_footer{position: fixed;z-index:10;width: 100%;height: 20px;bottom: 0;opacity: 1;background-image: url('../imgs/footer.png') ;}
 .h5_component_name_caption{
 	background-image: url(../imgs/page_caption_bg2.png);
 	width : 245px;
